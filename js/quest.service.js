@@ -50,8 +50,3 @@ function addGuess(newQuestTxt, newGuessTxt, lastRes) {
 function getCurrQuest() {
   return gCurrQuest
 }
-
-function hideAnswerButtons() {
-    $('#answer-buttons').hide()
-}
-

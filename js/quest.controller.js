@@ -11,6 +11,12 @@ $('#save-button').click(onAddGuess)
 function init() {
   createQuestsTree()
   loadTree()
+
+$('#modal-success, #modal-new-guess').on('hidden.bs.modal', function () {
+      $('#start-button').show()
+      $('#answer-buttons').addClass('d-none').hide()
+      $('#question-text').text(getCurrQuest().txt).hide()
+  })
 }
 
 function onStartGuessing() {
@@ -35,10 +41,8 @@ function onUserResponse(ev) {
             var characterName = getCurrQuest().txt
             $('#guessed-character-name').text(characterName)
             $('#modal-success').modal('show')
-            hideAnswerButtons()
         } else {
             $('#modal-new-guess').modal('show')
-            hideAnswerButtons()
         }
     } else {
         gLastRes = res
@@ -78,7 +82,6 @@ function onAddGuess() {
 
 function onRestartGame() {
 
-    hideAnswerButtons()
     $('#question-text').hide()
     $('#start-button').show()
     $('#error-message').hide()
